@@ -82,7 +82,7 @@ $(document).ready(function() {
 				check_coin_balance(false);
 				CheckOrderBookFn();
 				CheckOrderbook_Interval = setInterval(CheckOrderBookFn,30000);
-				//check_swap_status_Interval = setInterval(check_swap_status,20000);
+				check_swap_status_Interval = setInterval(check_swap_status,20000);
 				check_swap_status();
 				check_bot_list_Interval = setInterval(check_bot_list, 10000);
 				check_bot_list();
@@ -109,7 +109,15 @@ $(document).ready(function() {
 				charts_instruments_data.company = 'Komodo Platform';
 				ChartsInstruments(charts_instruments_data)
 				UpdateDexChart(selected_dICO_coin, 'KMD');
-				Refresh_active_StockChart_Interval = setInterval(Refresh_active_StockChart, 60000);
+				
+				var trading_chart_status = sessionStorage.getItem('mm_tradingchart');
+				if (trading_chart_status == 'show') {
+					$('.trading_chart_div').show();
+					Refresh_active_StockChart_Interval = setInterval(Refresh_active_StockChart, 60000);
+					Refresh_active_StockChart();
+				} else {
+					$('.trading_chart_div').hide();
+				}
 			}
 
 	//---- dICO App Settings END ----//
@@ -253,7 +261,7 @@ $('.porfolio_coins_list tbody').on('click', '.btn-portfoliogo', function() {
 	CheckPortfolioFn(false);
 	CheckOrderBookFn();
 	CheckOrderbook_Interval = setInterval(CheckOrderBookFn,30000);
-	//check_swap_status_Interval = setInterval(check_swap_status,20000);
+	check_swap_status_Interval = setInterval(check_swap_status,20000);
 	check_swap_status();
 	check_bot_list_Interval = setInterval(check_bot_list, 10000);
 	check_bot_list();
@@ -280,7 +288,14 @@ $('.porfolio_coins_list tbody').on('click', '.btn-portfoliogo', function() {
 		ChartsInstruments(charts_instruments_data)
 		UpdateDexChart($(this).data('coin'),'KMD');
 	}
-	Refresh_active_StockChart_Interval = setInterval(Refresh_active_StockChart, 60000);
+	
+	var trading_chart_status = sessionStorage.getItem('mm_tradingchart');
+	if (trading_chart_status == 'show') {
+		$('.trading_chart_div').show();
+		Refresh_active_StockChart_Interval = setInterval(Refresh_active_StockChart, 60000);
+	} else {
+		$('.trading_chart_div').hide();
+	}
 
 	// Fix width of chart
 	gChart.size = {width: $('#chartContainer').parent().width()};
@@ -383,7 +398,7 @@ $('.btn-inventoryclose').click(function(e) {
 	check_coin_balance(false);
 	CheckOrderBookFn();
 	CheckOrderbook_Interval = setInterval(CheckOrderBookFn,30000);
-	//check_swap_status_Interval = setInterval(check_swap_status,20000);
+	check_swap_status_Interval = setInterval(check_swap_status,20000);
 	check_swap_status();
 	check_bot_list_Interval = setInterval(check_bot_list, 10000);
 	check_bot_list();
@@ -393,8 +408,15 @@ $('.btn-inventoryclose').click(function(e) {
 	bot_screen_coin_balance();
 	bot_screen_sellcoin_balance_Interval = setInterval(bot_screen_sellcoin_balance, 30000);
 	bot_screen_sellcoin_balance();
-	Refresh_active_StockChart_Interval = setInterval(Refresh_active_StockChart, 60000);
-	Refresh_active_StockChart();
+	
+	var trading_chart_status = sessionStorage.getItem('mm_tradingchart');
+	if (trading_chart_status == 'show') {
+		$('.trading_chart_div').show();
+		Refresh_active_StockChart_Interval = setInterval(Refresh_active_StockChart, 60000);
+		Refresh_active_StockChart();
+	} else {
+		$('.trading_chart_div').hide();
+	}
 
 	var dexmode = sessionStorage.getItem('mm_dexmode');
 	var selected_dICO_coin = sessionStorage.getItem('mm_selected_dICO_coin');
@@ -411,7 +433,7 @@ $('.btn-inventoryrefresh').click(function(e) {
 	$('.dex_showinv_alice_tbl tbody').html(`<th><div style="text-align: center;">${default_lang.Common.loading_wait}</div></th>`);
 	$('.dex_showlist_unspents_tbl tbody').html(`<th><div style="text-align: center;">${default_lang.Common.loading_wait}</div></th>`);
 
-	check_coin_inventory($(this).data('coin'));
+	//check_coin_inventory($(this).data('coin'));
 	check_coin_listunspent($(this).data());
 });
 
@@ -571,7 +593,7 @@ $('.btn_coindashboard_exchange').click(function(e) {
 	check_coin_balance(false);
 	CheckOrderBookFn();
 	CheckOrderbook_Interval = setInterval(CheckOrderBookFn,30000);
-	//check_swap_status_Interval = setInterval(check_swap_status,20000);
+	check_swap_status_Interval = setInterval(check_swap_status,20000);
 	check_swap_status();
 	check_bot_list_Interval = setInterval(check_bot_list, 10000);
 	check_bot_list();
@@ -581,8 +603,15 @@ $('.btn_coindashboard_exchange').click(function(e) {
 	bot_screen_coin_balance();
 	bot_screen_sellcoin_balance_Interval = setInterval(bot_screen_sellcoin_balance, 30000);
 	bot_screen_sellcoin_balance();
-	Refresh_active_StockChart_Interval = setInterval(Refresh_active_StockChart, 60000);
-	Refresh_active_StockChart();
+	
+	var trading_chart_status = sessionStorage.getItem('mm_tradingchart');
+	if (trading_chart_status == 'show') {
+		$('.trading_chart_div').show();
+		Refresh_active_StockChart_Interval = setInterval(Refresh_active_StockChart, 60000);
+		Refresh_active_StockChart();
+	} else {
+		$('.trading_chart_div').hide();
+	}
 });
 
 $('.btn-exchangeclose').click(function(e){
@@ -627,6 +656,7 @@ $('.btn-exchangerefresh').click(function(e){
 	console.log($(this).data());
 
 	CheckOrderBookFn();
+	toastr.info('Updating Orderbooks')
 });
 
 
@@ -636,6 +666,7 @@ $('.btn-myordersrefresh').click(function(e){
 	console.log($(this).data());
 
 	check_my_prices();
+	toastr.info('Updating My Offers/Prices');
 });
 
 $('.btn-botlistrefresh').click(function(e){
@@ -644,6 +675,7 @@ $('.btn-botlistrefresh').click(function(e){
 	console.log($(this).data());
 
 	check_bot_list();
+	toastr.info('Updating Trade Status')
 });
 
 
@@ -917,6 +949,7 @@ $('.btn-trading_coin_balance_refresh').click(function(e){
 
 	bot_screen_sellcoin_balance();
 	bot_screen_coin_balance();
+	toastr.info('Updating balance info')
 })
 
 
@@ -1533,7 +1566,7 @@ $("#inventory_slider_input1").keyup(function(){
 	console.log(coin_balance);
 
 
-	if(slider_total >= coin_balance) {
+	if(slider_total >= coin_balance || slider_total < 0) {
 		$('.inventory-sliderTotal').css('color', 'red');
 		$('.inventory-sliderTotalCoin').css('color', 'red');
 		$('.btn-makeinventory').attr("disabled", "disabled");
@@ -1559,7 +1592,7 @@ $("#inventory_slider_input2").keyup(function(){
 	var coin_balance = $('.inventory-title').data('balance');
 	console.log(coin_balance);
 
-	if(slider_total >= coin_balance) {
+	if(slider_total >= coin_balance || slider_total < 0) {
 		$('.inventory-sliderTotal').css('color', 'red');
 		$('.inventory-sliderTotalCoin').css('color', 'red');
 		$('.btn-makeinventory').attr("disabled", "disabled");
@@ -1585,7 +1618,7 @@ $("#inventory_slider_input3").keyup(function(){
 	var coin_balance = $('.inventory-title').data('balance');
 	console.log(coin_balance);
 
-	if(slider_total >= coin_balance) {
+	if(slider_total >= coin_balance || slider_total < 0) {
 		$('.inventory-sliderTotal').css('color', 'red');
 		$('.inventory-sliderTotalCoin').css('color', 'red');
 		$('.btn-makeinventory').attr("disabled", "disabled");
@@ -1615,7 +1648,7 @@ $("#inventory-slider1").on("slide", function(slideEvt) {
 	var coin_balance = $('.inventory-title').data('balance');
 	console.log(coin_balance);
 
-	if(slider_total >= coin_balance) {
+	if(slider_total >= coin_balance || slider_total < 0) {
 		$('.inventory-sliderTotal').css('color', 'red');
 		$('.inventory-sliderTotalCoin').css('color', 'red');
 		$('.btn-makeinventory').attr("disabled", "disabled");
@@ -1643,7 +1676,7 @@ $("#inventory-slider2").on("slide", function(slideEvt) {
 	var coin_balance = $('.inventory-title').data('balance');
 	console.log(coin_balance);
 
-	if(slider_total >= coin_balance) {
+	if(slider_total >= coin_balance || slider_total < 0) {
 		$('.inventory-sliderTotal').css('color', 'red');
 		$('.inventory-sliderTotalCoin').css('color', 'red');
 		$('.btn-makeinventory').attr("disabled", "disabled");
@@ -1671,7 +1704,7 @@ $("#inventory-slider3").on("slide", function(slideEvt) {
 	var coin_balance = $('.inventory-title').data('balance');
 	console.log(coin_balance);
 
-	if(slider_total >= coin_balance) {
+	if(slider_total >= coin_balance || slider_total < 0) {
 		$('.inventory-sliderTotal').css('color', 'red');
 		$('.inventory-sliderTotalCoin').css('color', 'red');
 		$('.btn-makeinventory').attr("disabled", "disabled");
@@ -1885,6 +1918,7 @@ function addcoin_enable_disable_coin(data) {
 			if (electrum_option == false) {
 				//get_coins_list('');
 				$('.refresh_dex_balances').trigger('click');
+				toastr.info('Coins List updating');
 			} else {
 				get_coins_list(data);
 			}
@@ -2169,6 +2203,13 @@ function PortfolioTblDataFn(portfolio_tbl_data) {
 		var coingoal_style_showhide = '';
 	}
 
+	if (barterDEX_settings.charts == 'show') {
+		sessionStorage.setItem('mm_tradingchart', 'show');
+	}
+	if (barterDEX_settings.charts == 'hide') {
+		sessionStorage.setItem('mm_tradingchart', 'hide');
+	}
+
 	$('.dex_portfolio_coins_tbl tbody').empty();
 
 	$('.porfolio_coins_list tbody').empty();
@@ -2305,6 +2346,7 @@ $('.btn-refreshportfolio').click(function() {
     actiavte_portfolio_coins_list_spinner += '</th>';
     $('.porfolio_coins_list tbody').append(actiavte_portfolio_coins_list_spinner);
 	CheckPortfolioFn();
+	toastr.info('Updating Coins list');
 });
 
 $('.refresh_dex_potfolio').click(function() {
@@ -3101,13 +3143,21 @@ function infoOrderPrice(trade_data) {
 		onEscape: true,
 		backdrop: true,
 		message: `<table class="table table-striped orderbook_row_data" width="100%" style="margin-bottom: 0;">
-                          <tbody>
-                          	<tr>
-                          	<td>Address</td>
-                          	<td>${trade_data.address}</td>
-                          	</tr>
-                          </tbody>
-                        </table>`
+						<tbody>
+							<tr>
+								<td>Address</td>
+								<td>${trade_data.address}</td>
+							</tr>
+							<tr>
+								<td>Age</td>
+								<td>${trade_data.age}</td>
+							</tr>
+							<tr>
+								<td>UTXOs</td>
+								<td>${trade_data.numutxos}</td>
+							</tr>
+						</tbody>
+					</table>`
 	});
 }
 
@@ -3195,6 +3245,7 @@ function CheckOrderBookFn(sig) {
 				row_trade_data.maxbuy = val.avevolume / val.price;
 				row_trade_data.pubkey = val.pubkey;
 				row_trade_data.address = val.address;
+				row_trade_data.age = val.age;
 				row_trade_data.type = 'bids';
 				//row_trade_data.totalbuy = (val.avevolume / val.price) * val.numutxos;
 
@@ -3206,8 +3257,8 @@ function CheckOrderBookFn(sig) {
 					orderbook_bids_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + ((val.avevolume == 0) ? '-' : val.avevolume) + '</td>';
 					orderbook_bids_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + val.depth + '</td>';
 					//orderbook_bids_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + coloraddr.firstpart + '<font style="color: #' + coloraddr.colorpart1 + '; background-color: #' + coloraddr.colorpart1 + ';">' + coloraddr.char1 + '</font><font style="color: #' + coloraddr.colorpart2 + '; background-color: #' + coloraddr.colorpart2 + ';">' + coloraddr.char2 + '</font><font style="color: #' + coloraddr.colorpart3 + '; background-color: #' + coloraddr.colorpart3 + ';">' + coloraddr.char3 + '</font>' + coloraddr.lastpart + '</td>';
-					orderbook_bids_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + val.age + '</td>';
-					orderbook_bids_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + val.numutxos + '</td>';
+					//orderbook_bids_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + val.age + '</td>';
+					//orderbook_bids_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + val.numutxos + '</td>';
 					orderbook_bids_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> ' + val.zcredits.toFixed(2) + '</td>';
 					orderbook_bids_tr += '<td><button class="btn btn-xs" onclick=infoOrderPrice(' + JSON.stringify(row_trade_data) + ')><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button></td>';
 				orderbook_bids_tr += '</tr>';
@@ -3240,6 +3291,7 @@ function CheckOrderBookFn(sig) {
 				row_trade_data.maxbuy = val.avevolume / val.price;
 				row_trade_data.pubkey = val.pubkey;
 				row_trade_data.address = val.address;
+				row_trade_data.age = val.age;
 				row_trade_data.type = 'asks';
 				//row_trade_data.totalbuy = (val.avevolume / val.price) * val.numutxos;
 				var orderbook_asks_tr = '';
@@ -3250,8 +3302,8 @@ function CheckOrderBookFn(sig) {
 				orderbook_asks_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + ((val.avevolume == 0) ? '-' : val.avevolume) + '</td>';
 				orderbook_asks_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + val.depth + '</td>';
 				//orderbook_asks_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + coloraddr.firstpart + '<font style="color: #' + coloraddr.colorpart1 + '; background-color: #' + coloraddr.colorpart1 + ';">' + coloraddr.char1 + '</font><font style="color: #' + coloraddr.colorpart2 + '; background-color: #' + coloraddr.colorpart2 + ';">' + coloraddr.char2 + '</font><font style="color: #' + coloraddr.colorpart3 + '; background-color: #' + coloraddr.colorpart3 + ';">' + coloraddr.char3 + '</font>' + coloraddr.lastpart + '</td>';
-				orderbook_asks_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + val.age + '</td>';
-				orderbook_asks_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + val.numutxos + '</td>';
+				//orderbook_asks_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + val.age + '</td>';
+				//orderbook_asks_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')>' + val.numutxos + '</td>';
 				orderbook_asks_tr += '<td onclick=setOrderPrice(' + JSON.stringify(row_trade_data) + ')><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> ' + val.zcredits.toFixed(2) + '</td>';
 				orderbook_asks_tr += '<td><button class="btn btn-xs" onclick=infoOrderPrice(' + JSON.stringify(row_trade_data) + ')><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></button></td>';
 				orderbook_asks_tr += '</tr>';
@@ -3461,6 +3513,11 @@ $('.btn-refreshtrading_pair').click(function(e){
 	console.log($(this).data());
 
 	//update_min_max_price_input();
+})
+
+$('.refresh-trades-history-icon').click(function(e){
+	e.preventDefault();
+	toastr.info('Trade history updated')
 })
 
 $('input[name=trading_pair_options]').change(function() {
@@ -3872,7 +3929,7 @@ $('.your_coins_balance_info').on('click', '.coin_balance_inventory', function() 
 	var default_lang = JSON.parse(sessionStorage.getItem('mm_default_lang'));
 	coin = $(this).data('coin');
 	addr = $(this).data('addr');
-	balance = $(this).data('balance');
+	balance = JSON.parse(sessionStorage.getItem(coin + ".balance"));
 
 
 	$('.screen-exchange').hide()
@@ -3890,6 +3947,7 @@ $('.your_coins_balance_info').on('click', '.coin_balance_inventory', function() 
 	$('.inventory-title').html('Manage Inventory ('+balance+' '+coin+')');
 	$('.inventory-title').data('coin', coin);
 	$('.inventory-title').data('balance', balance);
+	$('.btn-makeinventory').data('coin', coin);
 	$('.coininventory[data-coin]').attr('data-coin', coin);
 	//$('.coininventory[data-coin]').attr('data-pair', $(this).data('pair'));
 	$('.coininventory[data-coin]').attr('data-addr', addr);
@@ -3898,7 +3956,8 @@ $('.your_coins_balance_info').on('click', '.coin_balance_inventory', function() 
 	$('.dex_showinv_alice_tbl tbody').html('<th><div style="text-align: center;">' + default_lang.Common.loading_wait + '</div></th>');
 	$('.dex_showlist_unspents_tbl tbody').html('<th><div style="text-align: center;">' + default_lang.Common.loading_wait + '</div></th>');
 
-	check_coin_inventory(coin);
+	//check_coin_inventory(coin);
+	get_coin_info(coin);
 	check_coin_listunspent($(this).data());
 
 	calc_data = {"coin": coin, "balance": balance};
@@ -5004,7 +5063,7 @@ function electrum_coin_balance(coin_balance_data) {
 	    url: url
 	}).done(function(coin_balance_output_data) {
 		// If successful
-		console.log(coin_balance_output_data);
+		sessionStorage.setItem(coin_balance_data.coin + ".balance", JSON.stringify(coin_balance_output_data.balance));
 
 		if (coin_balance_data.coin == 'KMD') {
 			var show_zcredits = '<br><button class="btn btn-xs btn-warning coin_balance_zcredits" style="font-size: 50%;"><span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> ' + coin_balance_output_data.zcredits + '</button>';
@@ -5362,7 +5421,7 @@ function check_swap_status_details(swap_status_data) {
 
 					CheckOrderBookFn();
 					CheckOrderbook_Interval = setInterval(CheckOrderBookFn,30000);
-					//check_swap_status_Interval = setInterval(check_swap_status,20000);
+					check_swap_status_Interval = setInterval(check_swap_status,20000);
 					check_swap_status();
 					check_bot_list_Interval = setInterval(check_bot_list, 10000);
 					check_bot_list();
@@ -5434,7 +5493,7 @@ function check_swap_status(sig) {
 
 	var userpass = sessionStorage.getItem('mm_userpass');
 	var mypubkey = sessionStorage.getItem('mm_mypubkey');
-	var ajax_data = {"userpass":userpass,"method":"swapstatus","pending":0};
+	var ajax_data = {"userpass":userpass,"method":"swapstatus","pending":0,"fast":1,"limit":30};
 	var url = "http://127.0.0.1:7783";
 
 	$.ajax({
@@ -5938,8 +5997,8 @@ $('.zeroconf_deposit_amount').keyup(function(){
 	//console.log(deposit_amount);
 
 	var empty = false;
-	if (deposit_amount < 10) {
-		console.log('Send Address is empty or less than 10');
+	if (deposit_amount < 10.01) {
+		console.log('Send Address is empty or less than 10.01');
 		empty = true;
 	}
 	//console.log(empty);
