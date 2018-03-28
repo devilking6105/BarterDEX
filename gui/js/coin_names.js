@@ -39,6 +39,14 @@ function return_coin_details(coin) {
 			coin_details.name = 'BlackCoin';
 			coin_details.explorer = 'https://chainz.cryptoid.info/blk//tx.dws?';
 			break;
+		case 'DYN':
+			coin_details.name = 'Dynamic';
+			coin_details.explorer = 'http://dyn.blocksandchain.com/tx/';
+			break;
+		case 'FJC':
+			coin_details.name = 'Fujicoin';
+			coin_details.explorer = 'http://explorer.fujicoin.org/tx/';
+			break;
 		case 'BITS':
 			coin_details.name = 'BitStar';
 			coin_details.explorer = 'http://explorer.v2.bitstarcoin.com/tx/';
