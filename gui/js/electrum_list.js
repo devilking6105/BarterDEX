@@ -15,11 +15,12 @@ var electrum_servers_list = {
   "CRYPTO": [{"electrum2.cipig.net":10008},{"electrum1.cipig.net":10008}],
   "DASH": [{"173.212.225.176": 50098},{"136.243.45.140": 50098}],
   "DEX": [{"electrum2.cipig.net":10006},{"electrum1.cipig.net":10006}],
-  "DNR": [{"173.254.244.122":50002},{"173.254.244.119":50002}],
+  "DNR": [{"173.254.244.122":50002},{"173.254.244.119":50002},{"155.254.33.176":50002}],
   "DGB": [{"136.243.45.140": 50022},{"173.212.225.176": 50022}],
   "DOGE": [{"173.212.225.176": 50015},{"136.243.45.140": 50015}],
   "EMC2": [{"173.212.225.176": 50079},{"136.243.45.140": 50079}],
   "FAIR": [{"173.212.225.176": 50005},{"136.243.45.140": 50005}],
+  "FJC": [{"electrumx3.fujicoin.org": 50001}, {"electrumx2.fujicoin.org": 50001}, {"electrumx1.fujicoin.org": 50001}],
   "GRS": [{"electrum10.groestlcoin.org":50001},{"electrum11.groestlcoin.org":50001},{"electrum13.groestlcoin.org":50001},{"electrum14.groestlcoin.org":50001}],
   "HODL": [{"electrum2.cipig.net":10009},{"electrum1.cipig.net":10009}],
   "HODLC": [{"hodl2.amit.systems":17989},{"hodl.amit.systems":17989}],
@@ -43,7 +44,9 @@ var electrum_servers_list = {
   "VTC": [{"173.212.225.176": 50088},{"136.243.45.140": 50088}],
   "WLC": [{"electrum2.cipig.net": 10014},{"electrum1.cipig.net": 10014}],
   "ZCL": [{"electrum2.cipig.net": 10055},{"electrum1.cipig.net": 10055}],
-  "ZEC": [{"173.212.225.176": 50032},{"136.243.45.140": 50032}]
+  "ZEC": [{"173.212.225.176": 50032},{"136.243.45.140": 50032}],
+  "BEER": [{"electrum1.cipig.net": 10022},{"electrum2.cipig.net": 10022}],
+  "PIZZA": [{"electrum1.cipig.net": 10024},{"electrum2.cipig.net": 10024}]
 }
 
 

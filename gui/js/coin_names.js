@@ -19,6 +19,14 @@ function return_coin_details(coin) {
                         coin_details.name = 'BitBay';
                         coin_details.explorer = 'https://chainz.cryptoid.info/bay/tx.dws?';
                         break;
+		case 'FTC':
+			coin_details.name = 'Feathercoin';
+			coin_details.explorer = 'https://fsight.chain.tips/tx/';
+			break;
+		case 'VRT':
+			coin_details.name = 'Virtus';
+			coin_details.explorer = 'http://213.183.45.119:3001/tx/';
+			break;
 		case 'BTC':
 			coin_details.name = 'Bitcoin';
 			coin_details.explorer = 'https://www.blocktrail.com/BTC/tx/';
@@ -31,10 +39,42 @@ function return_coin_details(coin) {
 			coin_details.name = 'BlackCoin';
 			coin_details.explorer = 'https://chainz.cryptoid.info/blk//tx.dws?';
 			break;
+		case 'DYN':
+			coin_details.name = 'Dynamic';
+			coin_details.explorer = 'http://dyn.blocksandchain.com/tx/';
+			break;
+		case 'FJC':
+			coin_details.name = 'Fujicoin';
+			coin_details.explorer = 'http://explorer.fujicoin.org/tx/';
+			break;
+		case 'BITS':
+			coin_details.name = 'BitStar';
+			coin_details.explorer = 'http://explorer.v2.bitstarcoin.com/tx/';
+			break;
+		case 'ROI':
+			coin_details.name = 'ROICoin';
+			coin_details.explorer = 'https://roi-coin-blockexplorer.roi-coin.com/tx/';
+			break;
+		case 'XCOIN':
+			coin_details.name = 'xCoin';
+			coin_details.explorer = 'http://xcoin.ddns.net/tx/';
+			break;
+		case 'ELP':
+			coin_details.name = 'Ellerium';
+			coin_details.explorer = 'https://elp.overemo.com/transaction/';
+			break;
+		case 'ELI':
+			coin_details.name = 'Elicoin';
+			coin_details.explorer = 'http://explorer.elicoin.net/?page=tx&id=';
+			break;
 		case 'BLOCK':
 			coin_details.name = 'Blocknet';
 			coin_details.explorer = 'https://chainz.cryptoid.info/block/tx.dws?';
 			break;
+                case 'BTCP':
+                        coin_details.name = 'BitcoinPrivate';
+                        coin_details.explorer = 'https://explorer.btcprivate.org/tx/';
+                        break;
 		case 'BTCZ':
 			coin_details.name = 'BitcoinZ';
 			coin_details.explorer = 'https://explorer.bitcoinz.site/tx/';
@@ -71,7 +111,7 @@ function return_coin_details(coin) {
 			coin_details.name = 'Dogecoin';
 			coin_details.explorer = 'http://dogechain.info/tx/';
 			break;
-        case 'DNR':
+		case 'DNR':
 			coin_details.name = 'Denarius';
 			coin_details.explorer = 'http://denariusexplorer.org/tx/';
 			break;
@@ -123,6 +163,10 @@ function return_coin_details(coin) {
 			coin_details.name = 'Mazacoin';
 			coin_details.explorer = 'http://mazacoin.thecoin.pw/tx/';
 			break;
+                case 'SCRIV':
+                        coin_details.name = 'Scriv';
+                        coin_details.explorer = 'http://explorer.scriv.network/tx/';
+                        break;
 		case 'SYS':
 			coin_details.name = 'Syscoin';
 			coin_details.explorer = 'https://chainz.cryptoid.info/sys/tx.dws?';
@@ -331,6 +375,10 @@ function return_coin_details(coin) {
 			coin_details.name = 'Bata';
 			coin_details.explorer = 'https://chainz.cryptoid.info/bta/tx.dws?';
 			break;
+                case 'SMART':
+                        coin_details.name = 'SmartCash';
+                        coin_details.explorer = 'https://explorer3.smartcash.cc/tx/';
+                        break;
 		case 'SMC':
 			coin_details.name = 'Smartcoin';
 			coin_details.explorer = 'http://smartchain.cc/tx/';
