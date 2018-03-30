@@ -113,7 +113,7 @@ function return_coin_details(coin) {
 			break;
 		case 'DNR':
 			coin_details.name = 'Denarius';
-			coin_details.explorer = 'http://denariusexplorer.org/tx/';
+			coin_details.explorer = 'https://denariusexplorer.org/tx/';
 			break;
 		case 'DGB':
 			coin_details.name = 'Digibyte';
