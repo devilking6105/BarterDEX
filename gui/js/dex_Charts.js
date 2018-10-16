@@ -98,7 +98,7 @@ function ChartsInstruments(instrument_data){
 	gChart.instrument = {
 		symbol: instrument_data.symbol,
 		company: instrument_data.company,
-		exchange: "BarterDEX"
+		exchange: "HTHWorld"
 	};
 	// gChart.timeInterval = StockChartX.TimeSpan.MILLISECONDS_IN_DAY;
 	gChart.removeDrawings();
