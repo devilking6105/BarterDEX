@@ -34,7 +34,7 @@ function PopulateDefaultLanguage() {
 	$('.language[data-langstr="starting_barterdex"]').text(default_lang.loading.starting_barterdex);
 	
 	// Populate login screen localization
-	$('.language[data-langstr="Welcome_to_BarterDEX"]').text(default_lang.login.welcome_to_barterdex);
+	$('.language[data-langstr="Welcome_to_HTHWorld"]').text(default_lang.login.welcome_to_hthworld);
 	$('.language[data-langstr="please_login"]').text(default_lang.login.please_login);
 	$('.language[data-langstr="passphrase"]').text(default_lang.login.passphrase);
 	$('.language[data-langstr="login_passphrase_input_placeholder"]').attr('placeholder',default_lang.login.login_passphrase_input_placeholder);
